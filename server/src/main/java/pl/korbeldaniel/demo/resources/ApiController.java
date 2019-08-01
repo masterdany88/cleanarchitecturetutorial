@@ -16,10 +16,6 @@ public class ApiController extends Application implements Api {
         this.usersController = usersController;
     }
 
-    @Override public String test() {
-        return "TEST";
-    }
-
     @Override public Response ping() {
         return Response.ok("pong").build();
     }
