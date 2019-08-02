@@ -4,13 +4,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
-import javax.ws.rs.core.Application;
+import javax.servlet.ServletContext;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
 @Component
 @Scope("request")
-public class ApiController extends Application implements Api {
+public class ApiController implements Api {
     private UsersController usersController;
+    @Context ServletContext servletContext;
 
     @Inject public ApiController(UsersController usersController) {
         this.usersController = usersController;

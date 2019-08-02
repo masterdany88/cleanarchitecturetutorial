@@ -36,6 +36,6 @@ public class LoginController extends AbstractComponentController<DemoContext, IL
   public void doLogin(String userId, String password) {
     // we are always happy with the credential ...
     this.context.setLoggedIn(true);
-    this.router.route("/application//");
+    this.router.route("/application/");
   }
 }

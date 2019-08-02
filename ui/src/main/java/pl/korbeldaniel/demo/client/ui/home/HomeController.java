@@ -26,7 +26,7 @@ import pl.korbeldaniel.demo.client.model.MyModel;
  * limitations under the License.
  */
 @Controller(
-    route = "/application//",
+    route = "/application/",
     selector = "content",
     componentInterface = IHomeComponent.class,
     component = HomeComponent.class

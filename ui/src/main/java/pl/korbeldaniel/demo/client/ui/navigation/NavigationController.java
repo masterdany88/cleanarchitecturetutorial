@@ -36,7 +36,7 @@ public class NavigationController extends AbstractComponentController<DemoContex
   public void doNavigateTo(String target) {
     switch (target) {
       case "/":
-      router.route("/application//");
+      router.route("/application/");
       break;
       case "users":
       router.route("/application/users");

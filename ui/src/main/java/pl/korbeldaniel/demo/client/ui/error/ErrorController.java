@@ -39,6 +39,6 @@ public class ErrorController extends AbstractComponentController<DemoContext, IE
 
   @Override
   public void doRouteHome() {
-    this.router.route("/application//");
+    this.router.route("/application/");
   }
 }

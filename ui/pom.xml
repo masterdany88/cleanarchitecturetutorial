@@ -130,7 +130,7 @@
                     <sourceLevel>${maven.compiler.source}</sourceLevel>
                     <logLevel>TRACE</logLevel>
                     <startupUrls>
-                        <startupUrl>demo.html</startupUrl>
+                        <startupUrl>index.html</startupUrl>
                     </startupUrls>
                     <devmodeWorkDir>${project.build.directory}/devModeWorkDir</devmodeWorkDir>
                     <launcherDir>${project.build.directory}/${project.build.finalName}</launcherDir>

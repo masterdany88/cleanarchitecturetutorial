@@ -4,7 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-@Path("/") public interface Api {
+@Path("/api") public interface Api {
 
     @GET @Path("ping") Response ping();
 
