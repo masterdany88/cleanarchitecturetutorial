@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class) public class ApiTest {
+@RunWith(SpringRunner.class) public class ApiResourceTest {
 
     private WebTarget client = ClientBuilder.newClient().target("http://localhost:8081/");
 

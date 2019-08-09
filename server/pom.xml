@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>pl.korbeldaniel</groupId>
+	<groupId>pl.korbeldaniel.demo</groupId>
 	<artifactId>server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -23,7 +23,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>pl.korbeldaniel</groupId>
+			<groupId>pl.korbeldaniel.demo</groupId>
 			<artifactId>api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

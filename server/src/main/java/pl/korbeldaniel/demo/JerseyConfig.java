@@ -12,4 +12,5 @@ public class JerseyConfig extends ResourceConfig {
         packages(getClass().getPackage().getName() + ".resources");
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
     }
+
 }

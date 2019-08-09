@@ -6,6 +6,8 @@ target/
 
 server/src/main/resources/static/*
 
+.directory
+
 ### STS ###
 .apt_generated
 .classpath

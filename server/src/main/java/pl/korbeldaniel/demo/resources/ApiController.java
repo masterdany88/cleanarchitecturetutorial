@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 @Component
 @Scope("request")
-public class ApiController implements Api {
+public class ApiController implements ApiResource {
     private UsersController usersController;
     @Context ServletContext servletContext;
 
