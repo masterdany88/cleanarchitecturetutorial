@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class) public class ApiResourceTest {
 
-    private WebTarget client = ClientBuilder.newClient().target("http://localhost:8081/");
+    private WebTarget client = ClientBuilder.newClient().target("http://localhost:8081/api");
 
     @Test public void apiTest() {
         String name = client.path("ping").request(MediaType.TEXT_PLAIN).get(String.class);

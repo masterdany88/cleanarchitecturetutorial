@@ -8,7 +8,7 @@ public interface UsersResource {
 
     @GET String getUsers();
 
-    @GET @Path("{id}") String getUser(@PathParam("id") Long id);
+    @GET @Path("{userId}") String getUser(@PathParam("userId") Long userId);
 
-    @Path("{id}/roles") UserRolesResource getUserRolesResource(@PathParam("id") Long id);
+    @Path("{userId}/roles") UserRolesResource getUserRolesResource(@PathParam("userId") Long userId);
 }
