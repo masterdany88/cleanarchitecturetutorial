@@ -14,10 +14,11 @@ import static org.junit.Assert.assertEquals;
 public class ResourceIT {
     private ApiResource apiResource;
     private Client client = ClientBuilder.newClient();
-    private WebTarget target = client.target("http://localhost:8081/");
+    private WebTarget staticTarget = client.target("http://localhost:8081");
+    private WebTarget apiTarget = client.target("http://localhost:8081/api");
 
     @Before public void before() {
-        apiResource = WebResourceFactory.newResource(ApiResource.class, target);
+        apiResource = WebResourceFactory.newResource(ApiResource.class, apiTarget);
     }
 
     @Test public void testPing() {
@@ -26,6 +27,6 @@ public class ResourceIT {
     }
 
     @Test public void testStatic() {
-        assertEquals(200, target.request().get().getStatus());
+        assertEquals(200, staticTarget.request().get().getStatus());
     }
 }
