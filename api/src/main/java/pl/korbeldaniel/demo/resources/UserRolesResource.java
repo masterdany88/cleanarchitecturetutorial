@@ -1,12 +1,9 @@
 package pl.korbeldaniel.demo.resources;
 
-import io.swagger.annotations.Api;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-@Api(value = "Users roles API")
  public interface UserRolesResource {
 
     @GET String getAll();

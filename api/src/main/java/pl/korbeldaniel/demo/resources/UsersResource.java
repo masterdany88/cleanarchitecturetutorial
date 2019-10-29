@@ -1,6 +1,5 @@
 package pl.korbeldaniel.demo.resources;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
 import pl.korbeldaniel.demo.model.User;
 
@@ -8,7 +7,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-@Api(value = "Users API")
  public interface UsersResource {
 
     @GET String getUsers();

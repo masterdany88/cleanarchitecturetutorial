@@ -20,7 +20,7 @@
         <module>api</module>
         <module>server</module>
 <!--        <module>ui</module>-->
-        <module>apiClient</module>
+        <module>it</module>
     </modules>
 
 </project>

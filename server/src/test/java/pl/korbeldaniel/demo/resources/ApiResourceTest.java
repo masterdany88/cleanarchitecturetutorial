@@ -1,36 +1,15 @@
 package pl.korbeldaniel.demo.resources;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
-import static org.junit.Assert.assertEquals;
+class ApiResourceTest {
+    private ApiController controller = new ApiController();
 
-@RunWith(SpringRunner.class) public class ApiResourceTest {
-
-    private WebTarget client = ClientBuilder.newClient().target("http://localhost:8081/api");
-
-    @Test public void apiTest() {
-        String name = client.path("ping").request(MediaType.TEXT_PLAIN).get(String.class);
-        assertEquals("pong", name);
-    }
-
-    @Test public void userApiTest() {
-        String name = client.path("users").request(MediaType.TEXT_PLAIN).get(String.class);
-        assertEquals("us1, us2, us3", name);
-    }
-
-    @Test public void userApiTest2() {
-        String name = client.path("users").path("1").request(MediaType.TEXT_PLAIN).get(String.class);
-        assertEquals("us1", name);
-    }
-
-    @Test public void userRolesApiTest() {
-        String name = client.path("users").path("1").path("roles").request(MediaType.TEXT_PLAIN).get(String.class);
-        assertEquals("1=r1, r2, r3", name);
+    @Test void testController() {
+        Assertions.assertEquals(Response.Status.OK, controller.ping().getStatusInfo());
+        Assertions.assertEquals("pong", controller.ping().getEntity());
     }
 }

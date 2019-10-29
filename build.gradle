@@ -1,0 +1,28 @@
+allprojects {
+    apply plugin: 'maven'
+    apply plugin: 'java'
+
+    group = 'pl.korbeldaniel.demo'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+
+    }
+    test {
+        useJUnitPlatform()
+    }
+}
+
+subprojects {
+    sourceCompatibility = 1.11
+    targetCompatibility = 1.11
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}

@@ -1,0 +1,12 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'java-library'
+
+dependencies {
+    implementation 'javax.ws.rs:javax.ws.rs-api:2.1.1'
+    implementation 'io.swagger:swagger-jersey2-jaxrs:1.5.13'
+}

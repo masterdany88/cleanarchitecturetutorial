@@ -14,7 +14,10 @@ public class ApiController implements ApiResource {
     private UsersController usersController;
     @Context ServletContext servletContext;
 
-    @Inject public ApiController(UsersController usersController) {
+    public ApiController() {
+    }
+
+    public ApiController(UsersController usersController) {
         this.usersController = usersController;
     }
 
