@@ -37,7 +37,6 @@ class ResourceIT {
 
     @Test
     void userApiTest() {
-        //String name = target.path("users").request(MediaType.TEXT_PLAIN).get(String.class);
         String name = apiResource.usersResource().getUsers();
         Assertions.assertEquals("us1, us2, us3", name);
     }
@@ -45,14 +44,12 @@ class ResourceIT {
     @Test
     void userApiTest2() {
         Long id = 1L;
-        //String name = target.path("users").path("1").request(MediaType.TEXT_PLAIN).get(String.class);
         User user = apiResource.usersResource().getUser(1L);
         Assertions.assertEquals(new User(id, "Test name " + id), user);
     }
 
     @Test
     void userRolesApiTest() {
-        //String roles = target.path("users").path("1").path("roles").request(MediaType.TEXT_PLAIN).get(String.class);
         String roles = apiResource.usersResource().getUserRolesResource(2L).getAll();
         Assertions.assertEquals(2L + "=r1, r2, r3", roles);
     }
