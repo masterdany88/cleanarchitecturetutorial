@@ -11,11 +11,8 @@ import javax.ws.rs.core.Response;
 @Component
 @Scope("request")
 public class ApiController implements ApiResource {
-    private UsersController usersController;
+    private final UsersController usersController;
     @Context ServletContext servletContext;
-
-    public ApiController() {
-    }
 
     public ApiController(UsersController usersController) {
         this.usersController = usersController;
