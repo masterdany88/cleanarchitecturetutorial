@@ -3,19 +3,17 @@ package pl.korbeldaniel.demo.resources;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import pl.korbeldaniel.demo.BaseIT;
 import pl.korbeldaniel.demo.model.User;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ApiResourceTest {
-    @LocalServerPort
-    private int testInstancePort;
-    private static WebTarget target;
+@Testcontainers
+class ApiResourceTest extends BaseIT {
+    private WebTarget target;
 
     @BeforeEach void beforeEach() {
         target = ClientBuilder.newClient().target("http://localhost:"+ testInstancePort +"/api");
@@ -40,9 +38,5 @@ class ApiResourceTest {
     @Test void userRolesApiTest() {
         String name = target.path("users").path("1").path("roles").request(MediaType.TEXT_PLAIN).get(String.class);
         Assertions.assertEquals("1=r1, r2, r3", name);
-    }
-
-    @Test void ok() {
-
     }
 }

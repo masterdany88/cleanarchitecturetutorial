@@ -4,8 +4,8 @@ import org.glassfish.jersey.client.proxy.WebResourceFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import pl.korbeldaniel.demo.BaseIT;
 import pl.korbeldaniel.demo.model.User;
 
 import javax.ws.rs.client.Client;
@@ -13,18 +13,15 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ResourceIT {
-    @LocalServerPort
-    private int testInstancePort;
+@Testcontainers
+class ResourceIT extends BaseIT {
     private Client client = ClientBuilder.newClient();
     private WebTarget staticTarget;
-    private WebTarget apiTarget;
     private ApiResource apiResource;
 
     @BeforeEach
     void beforeEach() {
-        apiTarget = client.target("http://localhost:" + testInstancePort + "/api");
+        WebTarget apiTarget = client.target("http://localhost:" + testInstancePort + "/api");
         staticTarget = client.target("http://localhost:" + testInstancePort + "");
         apiResource = WebResourceFactory.newResource(ApiResource.class, apiTarget);
     }
