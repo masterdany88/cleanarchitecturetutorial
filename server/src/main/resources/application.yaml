@@ -1,16 +1,25 @@
 server:
-  port: 8081
+  port: ${SERVER_PORT:9001}
 
 spring:
   application:
     name: test
 
+  flyway:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_DBNAME:server}${DB_OPTS}
+    user: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    enabled: true
+
   datasource:
-    url: jdbc:h2:file:~/test
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_DBNAME:server}${DB_OPTS}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
 
   jpa:
     hibernate.ddl-auto: create-drop
-    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        default_schema: public
+        jdbc.lob.non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect

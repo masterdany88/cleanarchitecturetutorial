@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import pl.korbeldaniel.demo.BaseIT;
-import pl.korbeldaniel.demo.model.User;
+import pl.korbeldaniel.demo.model.UserDto;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -31,8 +31,8 @@ class ApiResourceTest extends BaseIT {
 
     @Test void userApiTest2() {
         Long id = 1L;
-        User user = target.path("users").path(id.toString()).request(MediaType.APPLICATION_JSON).get(User.class);
-        Assertions.assertEquals(new User(id, "Test name " + id), user);
+        UserDto userDto = target.path("users").path(id.toString()).request(MediaType.APPLICATION_JSON).get(UserDto.class);
+        Assertions.assertEquals(new UserDto(id, "Test name " + id), userDto);
     }
 
     @Test void userRolesApiTest() {

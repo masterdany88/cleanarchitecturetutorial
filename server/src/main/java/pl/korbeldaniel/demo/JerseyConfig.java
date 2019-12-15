@@ -18,7 +18,7 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/api")
 public class JerseyConfig extends ResourceConfig {
 
-    private static final String RESOURCE_PACKAGE_NAME = JerseyConfig.class.getPackage().getName() + ".resources";
+    private static final String RESOURCE_PACKAGE_NAME = JerseyConfig.class.getPackage().getName();
 
     public JerseyConfig() {
         property(ServletProperties.FILTER_FORWARD_ON_404, true);

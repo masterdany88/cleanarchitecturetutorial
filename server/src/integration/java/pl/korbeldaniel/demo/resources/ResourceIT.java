@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import pl.korbeldaniel.demo.BaseIT;
-import pl.korbeldaniel.demo.model.User;
+import pl.korbeldaniel.demo.model.UserDto;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -41,8 +41,8 @@ class ResourceIT extends BaseIT {
     @Test
     void userApiTest2() {
         Long id = 1L;
-        User user = apiResource.usersResource().getUser(1L);
-        Assertions.assertEquals(new User(id, "Test name " + id), user);
+        UserDto userDto = apiResource.usersResource().getUser(1L);
+        Assertions.assertEquals(new UserDto(id, "Test name " + id), userDto);
     }
 
     @Test
