@@ -7,16 +7,19 @@ public class UserDto {
     private String name;
 
     public Long getId() {
+        // jackson serialization
         return id;
     }
 
     public String getName() {
+        // jackson serialization
         return name;
     }
 
     public UserDto() {
         // jackson serialization
     }
+
     public UserDto(Long id, String name) {
         this.id = id;
         this.name = name;

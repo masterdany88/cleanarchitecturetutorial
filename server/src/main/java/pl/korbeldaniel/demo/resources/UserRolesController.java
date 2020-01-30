@@ -16,6 +16,10 @@ public class UserRolesController implements UserRolesResource {
         return "userId " + userId + "roleId=" + id;
     }
 
+    @Override public String getById(Long userId2, Long userRoleId) {
+        return "userId " + userId + "userId2 " + userId2 + "roleId=" + userRoleId;
+    }
+
     UserRolesResource withUserId(Long userId) {
         this.userId = userId;
         return this;

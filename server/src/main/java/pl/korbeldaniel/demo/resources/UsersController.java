@@ -4,14 +4,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import pl.korbeldaniel.demo.model.UserDto;
 
-import javax.inject.Inject;
-
 @Component
 @Scope("request")
 public class UsersController implements UsersResource {
     private final UserRolesController userRolesController;
 
-    @Inject public UsersController(UserRolesController userRolesController) {
+    public UsersController(UserRolesController userRolesController) {
         this.userRolesController = userRolesController;
     }
 
