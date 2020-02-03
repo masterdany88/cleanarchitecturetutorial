@@ -32,24 +32,24 @@ class ResourceIT extends BaseIT {
         Assertions.assertEquals("pong", result.readEntity(String.class));
     }
 
-    @Test
-    void userApiTest() {
-        String name = apiResource.usersResource().getUsers();
-        Assertions.assertEquals("us1, us2, us3", name);
-    }
-
-    @Test
-    void userApiTest2() {
-        Long id = 1L;
-        UserDto userDto = apiResource.usersResource().getUser(1L);
-        Assertions.assertEquals(new UserDto(id, "Test name " + id), userDto);
-    }
-
-    @Test
-    void userRolesApiTest() {
-        String roles = apiResource.usersResource().getUserRolesResource(2L).getAll();
-        Assertions.assertEquals(2L + "=r1, r2, r3", roles);
-    }
+//    @Test
+//    void userApiTest() {
+//        String name = apiResource.usersResource().getUsers();
+//        Assertions.assertEquals("us1, us2, us3", name);
+//    }
+//
+//    @Test
+//    void userApiTest2() {
+//        Long id = 1L;
+//        UserDto userDto = apiResource.usersResource().getUser(1L);
+//        Assertions.assertEquals(new UserDto(id, "Test name " + id), userDto);
+//    }
+//
+//    @Test
+//    void userRolesApiTest() {
+//        String roles = apiResource.usersResource().getUserRolesResource(2L).getAll();
+//        Assertions.assertEquals(2L + "=r1, r2, r3", roles);
+//    }
 
     @Test
     void testStatic() {

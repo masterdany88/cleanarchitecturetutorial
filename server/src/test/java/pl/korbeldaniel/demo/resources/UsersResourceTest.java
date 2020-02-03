@@ -6,7 +6,7 @@ import pl.korbeldaniel.demo.model.UserDto;
 
 class UsersResourceTest {
     private Long userId = 2L;
-    private UsersResource controller = new UsersController(userRolesController);
+    private UsersResource controller = new UsersController(new UserRolesController());
 
     @Test void testGetUsers() {
         Assertions.assertEquals("us1, us2, us3", controller.getUsers());
