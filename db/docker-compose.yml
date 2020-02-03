@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+    db:
+        build: ./db
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./db/createMultipleDb.sh:/docker-entrypoint-initdb.d/createMultipleDb.sh
+        environment:
+            - POSTGRES_MULTIPLE_DATABASES=server
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        networks:
+            - local
+            
+networks:
+    local:
+        driver: bridge

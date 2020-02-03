@@ -12,8 +12,4 @@ import javax.ws.rs.PathParam;
      @GET
      @Path("{userRoleId}")
      String getById(@PathParam("userRoleId") Long userRoleId);
-
-     @GET
-     @Path("{userRoleId}")
-     String getById(@PathParam("userId") Long userId, @PathParam("userRoleId") Long userRoleId);
  }
