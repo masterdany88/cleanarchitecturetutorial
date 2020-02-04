@@ -1,0 +1,38 @@
+plugins {
+    id "org.wisepersist.gwt" version "1.0.13"
+    id "net.ltgt.apt" version "0.21"
+    id "net.ltgt.apt-eclipse" version "0.21"
+}
+
+// GWT compile workaround, because jars include sources, see: https://discuss.gradle.org/t/compilation-fails-when-i-use-guavas-optional-class-duplicate-class-com-google-common-collect-abstractiterator/7370/8
+tasks.withType(JavaCompile) {
+    options.sourcepath = files("nonExistingDir")
+}
+
+apply plugin: 'gwt'
+
+sourceCompatibility = 8
+targetCompatibility = 8
+
+dependencies {
+    // internal
+    //gwt project(':my-app:my-app-shared')
+    //gwt project(path:':my-app:my-app-shared', configuration: 'sources')
+
+    def naluVersion = "2.0.0"
+    // external
+    gwt group: "com.google.gwt", name: "gwt-user", version: "2.8.2"
+    compile group: 'org.jresearch.dominokit', name: 'domino-ui', version: '1.0.108'
+    gwt group: 'org.jresearch.dominokit', name: 'domino-ui', version: '1.0.108', classifier: "sources"
+    compile group: "com.github.nalukit", name: "nalu", version: naluVersion
+    compile group: "com.github.nalukit", name: "nalu-plugin-elemental2", version: naluVersion
+    annotationProcessor group: "com.github.nalukit", name: "nalu-processor", version: naluVersion
+}
+
+gwt {
+    gwtVersion="2.8.2"
+    minHeapSize = '512M'
+    maxHeapSize = '1024M'
+    modules 'pl.korbeldaniel.demo.ui.module'
+    compiler.localWorkers = 8
+}

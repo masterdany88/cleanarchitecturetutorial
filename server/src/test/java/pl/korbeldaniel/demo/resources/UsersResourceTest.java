@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.korbeldaniel.demo.model.UserDto;
 
+import static org.junit.Assert.fail;
+
 class UsersResourceTest {
     private Long userId = 2L;
     private UsersResource controller = new UsersController(new UserRolesController());
