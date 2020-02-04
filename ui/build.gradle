@@ -35,4 +35,5 @@ gwt {
     maxHeapSize = '1024M'
     modules 'pl.korbeldaniel.demo.ui.module'
     compiler.localWorkers = 8
+    src += files('build/generated/sources/annotationProcessor/java/main')
 }
