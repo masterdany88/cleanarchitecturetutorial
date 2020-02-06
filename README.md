@@ -11,3 +11,6 @@
 
 [localhost:9001/api/ping](http://localhost:9001/api/ping)
 
+[localhost:9001/api/users/6](http://localhost:9001/api/users/6)
+
+[localhost:9001/api/users/6/roles/2](http://localhost:9001/api/users/6/roles/2)
