@@ -14,3 +14,20 @@
 [localhost:9001/api/users/6](http://localhost:9001/api/users/6)
 
 [localhost:9001/api/users/6/roles/2](http://localhost:9001/api/users/6/roles/2)
+
+# first compile gwt app/project (ui)
+
+./gradlew clean compileGwt
+
+# to run from sources:
+
+./gradlew clean bootRun
+
+# to build and run:
+
+./gradlew clean bootJar
+
+cd server/build/libs
+
+java -jar server-0.0.1-SNAPSHOT.jar
+
