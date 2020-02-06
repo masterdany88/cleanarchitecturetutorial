@@ -1,50 +1,40 @@
 package pl.korbeldaniel.demo;
 
-import io.swagger.jaxrs.config.BeanConfig;
-import io.swagger.jaxrs.config.SwaggerConfigLocator;
-import io.swagger.jaxrs.config.SwaggerContextService;
-import io.swagger.jaxrs.listing.ApiListingResource;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletProperties;
-import org.springframework.context.annotation.Configuration;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
+import org.springframework.core.type.filter.AnnotationTypeFilter;
+import org.springframework.core.type.filter.RegexPatternTypeFilter;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.ext.Provider;
+import java.util.regex.Pattern;
 
-@Configuration
+@Component
 @ApplicationPath("/api")
 public class JerseyConfig extends ResourceConfig {
-
+    private Logger LOGGER = LoggerFactory.getLogger(JerseyConfig.class);
     private static final String RESOURCE_PACKAGE_NAME = JerseyConfig.class.getPackage().getName();
 
     public JerseyConfig() {
-        property(ServletProperties.FILTER_FORWARD_ON_404, true);
         this.registerEndpoints();
-        this.configureSwagger2();
+        property(ServletProperties.FILTER_FORWARD_ON_404, true);
     }
-
-    public void configureSwagger2() {
-        BeanConfig swaggerConfig = new BeanConfig();
-        swaggerConfig.setBasePath("/api");
-        SwaggerConfigLocator.getInstance().putConfig(SwaggerContextService.CONFIG_ID_DEFAULT, swaggerConfig);
-
-        packages(getClass().getPackage().getName(),
-                ApiListingResource.class.getPackage().getName());
-    }
-
-//    public Docket api() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .select()
-//                .apis(RequestHandlerSelectors.basePackage("pl.korbeldaniel.demo.resources"))
-//                .paths(PathSelectors.any())
-//                .build()
-//                .enable(true);
-//    }
 
     private void registerEndpoints() {
-        packages(RESOURCE_PACKAGE_NAME);
+        ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
+        provider.addIncludeFilter(new AnnotationTypeFilter(Provider.class));
+        provider.addIncludeFilter(new RegexPatternTypeFilter(Pattern.compile(".*Controller")));
+        provider.findCandidateComponents(RESOURCE_PACKAGE_NAME).forEach(beanDefinition -> {
+            try {
+                LOGGER.info("Jersey registration of {}", beanDefinition.getBeanClassName());
+                register(Class.forName(beanDefinition.getBeanClassName()));
+            } catch (ClassNotFoundException e) {
+                LOGGER.warn("Jersey failed to register {}", beanDefinition.getBeanClassName());
+            }
+        });
     }
 }

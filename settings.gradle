@@ -2,8 +2,8 @@ rootProject.name = 'root'
 
 include ':api'
 include ':server'
-include ':ui'
+//include ':ui'
 
 project(":api").projectDir = file("api")
 project(":server").projectDir = file("server")
-project(":ui").projectDir = file("ui")
+//project(":ui").projectDir = file("ui")
