@@ -8,7 +8,7 @@ import static org.junit.Assert.fail;
 
 class UsersResourceTest {
     private Long userId = 2L;
-    private UsersResource controller = new UsersController(new UserRolesController());
+    private UsersResource controller = new UsersRestController(new UserRolesRestController());
 
     @Test void testGetUsers() {
         Assertions.assertEquals("us1, us2, us3", controller.getUsers());

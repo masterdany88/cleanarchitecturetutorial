@@ -11,6 +11,8 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
+import static org.junit.Assert.fail;
+
 @Testcontainers
 class ApiResourceTest extends BaseIT {
     private WebTarget target;

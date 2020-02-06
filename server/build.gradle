@@ -64,3 +64,11 @@ task integrationTest(type: Test) {
 }
 
 check.dependsOn integrationTest
+
+task copyUiResources(type: Copy) {
+    from project(':ui').file('build/gwt/out/module/')
+    into file('src/main/resources/static/ui/')
+}
+
+bootJar.dependsOn copyUiResources
+bootRun.dependsOn copyUiResources

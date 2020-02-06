@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import javax.ws.rs.core.Response;
 
 class ApiResourceTest {
-    private ApiResource controller = new ApiController();
+    private ApiResource controller = new ApiRestController();
 
     @Test void testController() {
         Assertions.assertEquals(Response.Status.OK, controller.ping().getStatusInfo());

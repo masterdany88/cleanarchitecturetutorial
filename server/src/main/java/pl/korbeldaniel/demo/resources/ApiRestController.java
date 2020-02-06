@@ -10,7 +10,7 @@ import javax.ws.rs.core.UriInfo;
 
 @Component
 @Scope("request")
-public class ApiController implements ApiResource {
+public class ApiRestController implements ApiResource {
 
     @Override
     public Response ping() {

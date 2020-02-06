@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("request")
-public class UserRolesController implements UserRolesResource {
+public class UserRolesRestController implements UserRolesResource {
     private Long userId;
 
     @Override public String getAll() {

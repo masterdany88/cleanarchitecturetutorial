@@ -27,7 +27,7 @@ public class JerseyConfig extends ResourceConfig {
     private void registerEndpoints() {
         ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
         provider.addIncludeFilter(new AnnotationTypeFilter(Provider.class));
-        provider.addIncludeFilter(new RegexPatternTypeFilter(Pattern.compile(".*Controller")));
+        provider.addIncludeFilter(new RegexPatternTypeFilter(Pattern.compile(".*RestController")));
         provider.findCandidateComponents(RESOURCE_PACKAGE_NAME).forEach(beanDefinition -> {
             try {
                 LOGGER.info("Jersey registration of {}", beanDefinition.getBeanClassName());

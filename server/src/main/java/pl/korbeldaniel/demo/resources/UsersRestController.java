@@ -6,11 +6,11 @@ import pl.korbeldaniel.demo.model.UserDto;
 
 @Component
 @Scope("request")
-public class UsersController implements UsersResource {
-    private final UserRolesController userRolesController;
+public class UsersRestController implements UsersResource {
+    private final UserRolesRestController userRolesRestController;
 
-    public UsersController(UserRolesController userRolesController) {
-        this.userRolesController = userRolesController;
+    public UsersRestController(UserRolesRestController userRolesRestController) {
+        this.userRolesRestController = userRolesRestController;
     }
 
     @Override public String getUsers() {
@@ -22,7 +22,7 @@ public class UsersController implements UsersResource {
     }
 
     @Override public UserRolesResource getUserRolesResource(Long id) {
-        return userRolesController.withUserId(id);
+        return userRolesRestController.withUserId(id);
     }
 
 }
