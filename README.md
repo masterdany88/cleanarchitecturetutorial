@@ -15,6 +15,12 @@
 
 [localhost:9001/api/users/6/roles/2](http://localhost:9001/api/users/6/roles/2)
 
+# you need db 
+ postgres db on localhost:5432 is configured as default
+ you can run it in container using `docker-compose`, execute:
+ cd db
+ docker-compose up
+
 # first compile gwt app/project (ui)
 
 ./gradlew clean compileGwt
